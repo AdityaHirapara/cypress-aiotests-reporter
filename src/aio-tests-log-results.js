@@ -187,6 +187,7 @@ const getOrCreateCycle = (aioConfig) => {
 
                     })
                     .catch(function (error) {
+                        aioLogger.log("response" + response.data)
                         if(error.response.status === 401 || error.response.status === 403) {
                             return Promise.resolve("Authorization error.  Please check credentials.")
                         } else {
