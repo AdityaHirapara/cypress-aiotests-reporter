@@ -182,12 +182,12 @@ const getOrCreateCycle = (aioConfig) => {
                     title: cycleTitle
                 })
                     .then(function (response) {
+                        aioLogger.log("response" + response.data)
                         aioCycleConfig["cycleKeyToReportTo"] = response.data.key;
                         aioLogger.log("Cycle created successfully : " + aioCycleConfig.cycleKeyToReportTo )
 
                     })
                     .catch(function (error) {
-                        aioLogger.log("response" + response.data)
                         if(error.response.status === 401 || error.response.status === 403) {
                             return Promise.resolve("Authorization error.  Please check credentials.")
                         } else {
